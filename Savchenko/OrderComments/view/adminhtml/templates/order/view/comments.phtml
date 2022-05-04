@@ -1,0 +1,21 @@
+<?php /* @var $block View */
+
+use Magento\Sales\Block\Adminhtml\Order\View;
+
+?>
+<?php $order = $block->getOrder() ?>
+<?php $orderComments = $order->getOrderComments(); ?>
+<?php if ($orderComments): ?>
+    <section class="admin__page-section sv-ordercomments">
+        <div class="admin__page-section-title">
+            <span class="title">Comments</span>
+        </div>
+        <div class="admin__page-section-content">
+            <p class="order-comments">
+                <?= /* @noEscape */
+                $block->escapeHtml($orderComments) ?></p>
+        </div>
+    </section>
+<?php endif; ?>
+
+

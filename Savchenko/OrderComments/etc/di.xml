@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\PaymentInformationManagement">
+        <plugin name="savchenko-order-comments"
+                type="Savchenko\OrderComments\Plugin\Model\Checkout\CustomerOrderComments" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="savchenko-guest-order-comments"
+                type="Savchenko\OrderComments\Plugin\Model\Checkout\GuestOrderComments" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="savchenko-layout-preprocessor"
+                type="Savchenko\OrderComments\Plugin\Checkout\LayoutProcessorPlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sales_order_grid_data_source"
+                      xsi:type="string">Savchenko\OrderComments\Plugin\Model\ResourceModel\Order\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
+
